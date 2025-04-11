@@ -1,6 +1,4 @@
-# Master Front End XVII - React Laboratory "Image Gallery"
-
-# Image Gallery with React
+# Lemonstock - Image Gallery with React
 
 This project is a web application developed with React that allows users to view and manage an image gallery divided into two categories: nature and city. The application includes a functional shopping cart and a modern, responsive user interface.
 

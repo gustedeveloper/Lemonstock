@@ -1,6 +1,4 @@
-# Máster Front End XVII - Laboratorio React "Listado de imágenes"
-
-# Galería de Imágenes con React
+# Lemonstock - Galería de Imágenes con React
 
 Este proyecto es una aplicación web desarrollada con React que permite visualizar y gestionar una galería de imágenes dividida en dos categorías: naturaleza y ciudad. La aplicación incluye un carrito de compras funcional y una interfaz de usuario moderna y responsive.
 
