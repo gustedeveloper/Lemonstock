@@ -1,16 +1,8 @@
 import { FC } from "react";
 import { PictureInfo } from "../../core/model";
-import {
-  Box,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Grid2,
-  Typography,
-} from "@mui/material";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { Grid2, Typography } from "@mui/material";
 import React from "react";
+import { CartItem } from "./components/cart-item";
 
 interface Props {
   cartPictures: PictureInfo[];
@@ -56,7 +48,7 @@ export const CartComponent: FC<Props> = React.memo((props) => {
         ) : (
           <>
             {cartPictures.map((picture) => (
-              <Grid2
+              /*<Grid2
                 container
                 key={picture.id}
                 sx={{ justifyContent: "center" }}
@@ -78,11 +70,7 @@ export const CartComponent: FC<Props> = React.memo((props) => {
                       },
                     }}
                   >
-                    <CardMedia
-                      component="img"
-                      image={picture.picUrl}
-                      alt={picture.title}
-                    ></CardMedia>
+                    <CartItemImage image={picture.picUrl} alt={picture.title} />
                   </Card>
                   <Box
                     sx={{
@@ -100,40 +88,20 @@ export const CartComponent: FC<Props> = React.memo((props) => {
                       alignItems: "center",
                     }}
                   >
-                    <CardContent sx={{ p: "5px 15px" }}>
-                      <Typography sx={{ fontSize: "12px" }}>
-                        {picture.title}
-                      </Typography>
-                      <Typography
-                        color="primary.main"
-                        sx={{
-                          textAlign: {
-                            xs: "center",
-                            md: "start",
-                          },
-                        }}
-                      >
-                        {picture.price.toFixed(2)} €
-                      </Typography>
-                    </CardContent>
-                    <CardActions
-                      sx={{
-                        p: {
-                          xs: "0px",
-                        },
-                      }}
-                    >
-                      <DeleteForeverIcon
-                        color="primary"
-                        onClick={() => deleteFromCart(picture.id)}
-                        sx={{
-                          cursor: "pointer",
-                        }}
-                      ></DeleteForeverIcon>
-                    </CardActions>
+                    <CartItemInfo title={picture.title} price={picture.price} />
+
+                    <CartItemActions
+                      id={picture.id}
+                      deleteFromCart={deleteFromCart}
+                    />
                   </Box>
                 </Grid2>
-              </Grid2>
+              </Grid2>*/
+              <CartItem
+                key={picture.id}
+                picture={picture}
+                deleteFromCart={deleteFromCart}
+              />
             ))}
           </>
         )}
