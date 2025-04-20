@@ -1,17 +1,11 @@
 import { FC, useContext } from "react";
-import {
-  Button,
-  Divider,
-  Drawer,
-  Grid2,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Drawer, Grid2 } from "@mui/material";
 import { PicturesContext } from "../../core/context/pictures-context";
 import { CartContainer } from "../cart";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
+import { DrawerHeader } from "./components/cart-drawer/drawer-header";
+import { DrawerActions } from "./components/cart-drawer/drawer-actions";
+import { DrawerTotal } from "./components/cart-drawer/drawer-total";
 
 export const CartInsideDrawer: FC = () => {
   const {
@@ -31,12 +25,7 @@ export const CartInsideDrawer: FC = () => {
       open={drawer}
       onClose={handleDrawerClose}
     >
-      <Grid2 size={12}>
-        <IconButton onClick={handleDrawerClose} sx={{ p: "5px", m: "15px" }}>
-          <ChevronRightIcon />
-        </IconButton>
-      </Grid2>
-      <Divider sx={{ mb: "20px" }} />
+      <DrawerHeader handleDrawerClose={handleDrawerClose} />
       <CartContainer />
 
       {selectedPictures.length !== 0 ? (
@@ -55,38 +44,8 @@ export const CartInsideDrawer: FC = () => {
               gap: "15px",
             }}
           >
-            <Grid2 sx={{ textAlign: "center" }}>
-              <Typography variant="h6" color="primary.main">
-                Total: {totalCartBalance.toFixed(2)} €
-              </Typography>
-            </Grid2>
-            <Grid2
-              sx={{
-                display: "flex",
-                gap: "10px",
-                flexDirection: {
-                  xs: "column",
-                  md: "row",
-                },
-              }}
-            >
-              <Button
-                variant="outlined"
-                size="small"
-                startIcon={<DeleteIcon />}
-                onClick={removeAll}
-              >
-                Remove All
-              </Button>
-              <Button
-                sx={{ width: "130px" }}
-                variant="contained"
-                size="small"
-                onClick={() => navigate("/checkout")}
-              >
-                Checkout
-              </Button>
-            </Grid2>
+            <DrawerTotal totalCartBalance={totalCartBalance} />
+            <DrawerActions removeAll={removeAll} navigate={navigate} />
           </Grid2>
         </Grid2>
       ) : (

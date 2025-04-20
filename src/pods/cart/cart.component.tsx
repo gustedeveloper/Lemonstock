@@ -6,8 +6,6 @@ import { CartList } from "./components";
 interface Props {
   cartPictures: PictureInfo[];
   deleteFromCart: (id: string) => void;
-  removeAll: () => void;
-  totalCartBalance: number;
 }
 
 export const CartComponent: FC<Props> = React.memo((props) => {
