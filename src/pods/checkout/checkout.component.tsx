@@ -1,5 +1,6 @@
-import { Button, Grid2, Typography } from "@mui/material";
+import { Grid2 } from "@mui/material";
 import { FC } from "react";
+import { CheckoutBalance, CheckoutButton, CheckoutTitle } from "./components";
 
 interface Props {
   totalCartBalance: number;
@@ -26,40 +27,11 @@ export const CheckoutComponent: FC<Props> = (props) => {
         justifyContent: "space-between",
       }}
     >
-      <Grid2>
-        <Typography
-          variant="h3"
-          sx={{ fontWeight: "lighter", color: "primary.main" }}
-        >
-          Summary
-        </Typography>
-      </Grid2>
+      <CheckoutTitle />
 
-      <Grid2
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Typography sx={{ fontWeight: "lighter", alignSelf: "center" }}>
-          Balance
-        </Typography>
-        <Typography
-          variant="h5"
-          sx={{
-            fontWeight: "lighter",
-            fontStyle: "oblique",
-          }}
-        >
-          {totalCartBalance.toFixed(2)} €
-        </Typography>
-      </Grid2>
+      <CheckoutBalance totalCartBalance={totalCartBalance} />
 
-      <Grid2 sx={{ display: "flex", justifyContent: "center" }}>
-        <Button size="large" variant="contained">
-          Checkout
-        </Button>
-      </Grid2>
+      <CheckoutButton />
     </Grid2>
   );
 };
