@@ -28,7 +28,7 @@ export const CartInsideDrawer: FC = () => {
           sx={{
             display: "flex",
             justifyContent: "center",
-            mt: "20px",
+            m: "20px",
           }}
         >
           <Grid2
