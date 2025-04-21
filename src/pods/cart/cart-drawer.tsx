@@ -6,16 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { DrawerHeader } from "./components/cart-drawer/drawer-header";
 import { DrawerActions } from "./components/cart-drawer/drawer-actions";
 import { DrawerTotal } from "./components/cart-drawer/drawer-total";
+import { useCart } from "./hooks/useCart";
 
 export const CartInsideDrawer: FC = () => {
-  const {
-    drawer,
-    handleDrawerClose,
-    totalCartBalance,
-    removeAll,
-    selectedPictures,
-  } = useContext(PicturesContext);
-
+  const { cartItemCount, totalCartBalance, removeAll } = useCart();
+  const { drawer, handleDrawerClose } = useContext(PicturesContext);
   const navigate = useNavigate();
 
   return (
@@ -28,7 +23,7 @@ export const CartInsideDrawer: FC = () => {
       <DrawerHeader handleDrawerClose={handleDrawerClose} />
       <CartContainer />
 
-      {selectedPictures.length !== 0 ? (
+      {cartItemCount !== 0 ? (
         <Grid2
           sx={{
             display: "flex",
