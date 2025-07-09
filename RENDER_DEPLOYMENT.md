@@ -46,4 +46,4 @@ El proceso incluye:
 
 ### 4. Resultado
 
-El proyecto queda desplegado en: `https://[nombre-del-proyecto].onrender.com`
+El proyecto queda desplegado en: https://lemonstock.onrender.com/
