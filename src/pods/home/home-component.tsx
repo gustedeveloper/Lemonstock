@@ -14,18 +14,16 @@ interface Category {
   img: string;
 }
 
-const base = import.meta.env.BASE_URL;
-
 const pages: Category[] = [
   {
     name: "City category",
     path: "/city-category",
-    img: `${base}assets/city/city1.jpg`,
+    img: "assets/city/city1.jpg",
   },
   {
     name: "Nature category",
     path: "/landscape-category",
-    img: `${base}assets/landscapes/landscape3.jpg`,
+    img: "assets/landscapes/landscape3.jpg",
   },
 ];
 

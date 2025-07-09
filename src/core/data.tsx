@@ -1,9 +1,7 @@
 import { PictureInfo } from "./model";
 
-const base = import.meta.env.BASE_URL;
-
-const landscapeSrc = `${base}assets/landscapes/landscape`;
-const citySrc = `${base}assets/city/city`;
+const landscapeSrc = "assets/landscapes/landscape";
+const citySrc = "assets/city/city";
 
 export const landscapePictures: PictureInfo[] = [
   {

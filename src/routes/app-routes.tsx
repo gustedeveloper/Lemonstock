@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export const AppRoutes = () => {
   return (
     <>
-      <Router basename="/Lemonstock/">
+      <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/city-category" element={<CityCategoryPage />} />
