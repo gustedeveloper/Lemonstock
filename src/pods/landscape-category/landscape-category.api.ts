@@ -1,8 +1,16 @@
-import { PictureInfo } from "../../core/model";
-import { landscapePictures } from "../../core/data";
+const apiKey = import.meta.env.VITE_PEXELS_API_KEY;
 
-export const getPictures = (): Promise<PictureInfo[]> => {
-  return new Promise((resolve) => {
-    resolve(landscapePictures);
-  });
+export const getPictures = async () => {
+  const response = await fetch(
+    `https://api.pexels.com/v1/search?query=landscape&per_page=10`,
+    {
+      headers: {
+        Authorization: apiKey,
+      },
+    }
+  );
+
+  const data = await response.json();
+  console.log(data.photos);
+  return data.photos;
 };

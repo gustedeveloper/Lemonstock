@@ -1,28 +1,21 @@
 import * as api from "../../core/model";
 
-export interface PictureInfoVm {
-  id: string;
-  picUrl: string;
-  title: string;
-  selected: boolean;
-  price: number;
-}
-
 export const mapPictureFromApiToVm = (
-  picture: api.PictureInfo,
+  picture: api.PhotoAPI,
   selectedPictures: string[]
-): PictureInfoVm => ({
-  id: picture.id,
-  picUrl: picture.picUrl,
-  title: picture.title,
-  price: picture.price,
-  selected: selectedPictures.includes(picture.id),
+): api.PhotoVM => ({
+  id: picture.id.toString(),
+  picUrl: picture.src.original,
+  title: picture.alt,
+  alt: picture.alt,
+  price: 0,
+  selected: selectedPictures.includes(picture.id.toString()),
 });
 
 export const mapPictureCollectionFromApiToVm = (
-  pictureCollection: api.PictureInfo[],
+  pictureCollection: api.PhotoAPI[],
   selectedPictures: string[]
-): PictureInfoVm[] =>
+): api.PhotoVM[] =>
   pictureCollection.map((picture) =>
     mapPictureFromApiToVm(picture, selectedPictures)
   );
