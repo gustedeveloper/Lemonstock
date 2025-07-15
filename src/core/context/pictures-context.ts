@@ -1,9 +1,9 @@
 import React from "react";
-import { PictureInfoVm } from "../model";
+import { PhotoVM } from "../model";
 
 interface ContextModel {
-  pictures: PictureInfoVm[];
-  setPictures: (pictures: PictureInfoVm[]) => void;
+  pictures: PhotoVM[];
+  setPictures: (pictures: PhotoVM[]) => void;
   selectedPictures: string[];
   setSelectedPictures: (pictures: string[]) => void;
   drawer: boolean;

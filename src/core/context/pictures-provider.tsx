@@ -1,9 +1,9 @@
 import { PropsWithChildren, useState } from "react";
 import { PicturesContext } from "./pictures-context";
-import { PictureInfoVm } from "../model";
+import { PhotoVM } from "../model";
 
 export const PicturesProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  const [pictures, setPictures] = useState<PictureInfoVm[]>([]);
+  const [pictures, setPictures] = useState<PhotoVM[]>([]);
   const [selectedPictures, setSelectedPictures] = useState<string[]>([]);
   const [drawer, setDrawer] = useState(false);
   const [totalCartBalance, setTotalCartBalance] = useState<number>(0);
