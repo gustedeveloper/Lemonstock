@@ -1,11 +1,11 @@
 import { Grid2 } from "@mui/material";
 import { EmptyCartMessage } from "./empty-cart-message";
 import { CartItem } from "./cart-item";
-import { PictureInfo } from "../../../core/model";
+import { PhotoVM } from "../../../core/model";
 import { FC } from "react";
 
 interface Props {
-  cartPictures: PictureInfo[];
+  cartPictures: PhotoVM[];
   deleteFromCart: (id: string) => void;
 }
 

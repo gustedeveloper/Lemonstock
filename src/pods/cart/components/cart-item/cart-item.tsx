@@ -3,10 +3,10 @@ import { CartItemImage } from "./cart-item-image";
 import { CartItemInfo } from "./cart-item-info";
 import { CartItemActions } from "./cart-item-actions";
 import { FC } from "react";
-import { PictureInfo } from "../../../../core/model";
+import { PhotoVM } from "../../../../core/model";
 
 interface Props {
-  picture: PictureInfo;
+  picture: PhotoVM;
   deleteFromCart: (id: string) => void;
 }
 

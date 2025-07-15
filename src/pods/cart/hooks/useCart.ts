@@ -1,27 +1,26 @@
 import { useContext, useEffect, useState } from "react";
 import { PicturesContext } from "../../../core/context/pictures-context";
-import { PictureInfo } from "../../../core/model";
-import { getAllPictures } from "../cart.api";
+import { PhotoVM } from "../../../core/model";
 
 export const useCart = () => {
   const {
+    pictures,
     selectedPictures,
     setSelectedPictures,
     totalCartBalance,
     setTotalCartBalance,
     removeAll,
   } = useContext(PicturesContext);
-  const [cartPictures, setCartPictures] = useState<PictureInfo[]>([]);
+  const [cartPictures, setCartPictures] = useState<PhotoVM[]>([]);
 
   useEffect(() => {
-    getAllPictures().then((apiPictures) => {
-      setCartPictures(
-        apiPictures.filter((picture) => selectedPictures.includes(picture.id))
-      );
-    });
+    const filteredPictures = pictures.filter((picture) =>
+      selectedPictures.includes(picture.id)
+    );
+    setCartPictures(filteredPictures);
 
     getTotalCartBalance();
-  }, [selectedPictures, cartPictures]);
+  }, [selectedPictures, pictures]);
 
   const deleteFromCart = (id: string) => {
     const updateWithDeletedPicture = selectedPictures.filter(
