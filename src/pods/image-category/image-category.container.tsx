@@ -1,14 +1,14 @@
 import { FC, useContext, useEffect } from "react";
-import { PictureInfo, PictureInfoVm } from "../../core/model";
+import { PhotoAPI, PhotoVM } from "../../core/model";
 import { ImageCategoryComponent } from "./image-category.component";
 import { PicturesContext } from "../../core/context/pictures-context";
 
 interface Props {
-  getPictures: () => Promise<PictureInfo[]>;
+  getPictures: () => Promise<PhotoAPI[]>;
   mapPictureCollectionFromApiToVm: (
-    apiPictures: PictureInfo[],
+    apiPictures: PhotoAPI[],
     selectedPictures: string[]
-  ) => PictureInfoVm[];
+  ) => PhotoVM[];
 }
 
 export const ImageCategoryContainer: FC<Props> = (props) => {
@@ -35,7 +35,7 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
     }
   };
 
-  const addDeleteFromCheckBox = (selection: PictureInfoVm, id: string) => {
+  const addDeleteFromCheckBox = (selection: PhotoVM, id: string) => {
     const updateWithDeletedPicture = selectedPictures.filter(
       (picture) => picture !== selection.id
     );
