@@ -16,12 +16,6 @@ export interface PhotoVM {
   title: string;
   alt: string;
   price: number;
-  //liked: boolean;
-  //favourite: boolean;
   picUrl: string;
-  // photographer: {
-  //name: string;
-  // url: string;
-  // };
   selected: boolean;
 }
