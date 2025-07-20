@@ -18,12 +18,12 @@ const pages: Category[] = [
   {
     name: "City category",
     path: "/city-category",
-    img: "assets/city/city1.jpg",
+    img: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2l0eSUyMHdhbGxwYXBlcnxlbnwwfHwwfHx8MA%3D%3D",
   },
   {
-    name: "Nature category",
+    name: "Landscape category",
     path: "/landscape-category",
-    img: "assets/landscapes/landscape3.jpg",
+    img: "https://www.foresthomesstore.com/cdn/shop/files/Paradise-of-Emerald-Mural-Wallpaper-2_1000x.jpg?v=1690918935",
   },
 ];
 
