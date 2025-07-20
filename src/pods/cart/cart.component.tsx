@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { PictureInfo } from "../../core/model";
+import { PhotoVM } from "../../core/model";
 import React from "react";
 import { CartList } from "./components";
 
 interface Props {
-  cartPictures: PictureInfo[];
+  cartPictures: PhotoVM[];
   deleteFromCart: (id: string) => void;
 }
 
