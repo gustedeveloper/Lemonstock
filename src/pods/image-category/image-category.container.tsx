@@ -1,21 +1,23 @@
 import { FC, useContext, useEffect } from "react";
-import { PhotoAPI, PhotoVM } from "../../core/model";
+import { PhotoVM } from "../../core/model";
 import { ImageCategoryComponent } from "./image-category.component";
 import { PicturesContext } from "../../core/context/pictures-context";
 
 interface Props {
-  getPictures: () => Promise<PhotoAPI[]>;
-  mapPictureCollectionFromApiToVm: (
-    apiPictures: PhotoAPI[],
-    selectedPictures: string[]
-  ) => PhotoVM[];
+  getPictures: () => Promise<PhotoVM[]>;
 }
 
 export const ImageCategoryContainer: FC<Props> = (props) => {
-  const { getPictures, mapPictureCollectionFromApiToVm } = props;
+  const { getPictures } = props;
 
-  const { pictures, setPictures, selectedPictures, setSelectedPictures } =
-    useContext(PicturesContext);
+  const {
+    pictures,
+    setPictures,
+    selectedPictures,
+    setSelectedPictures,
+    cartPictures,
+    setCartPictures,
+  } = useContext(PicturesContext);
 
   const handleCheckBox = (id: string) => {
     const selection = pictures.find((picture) => picture.id === id);
@@ -24,38 +26,30 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
       selection.selected = !selection.selected;
       const updatedPictures = pictures.map((picture) =>
         picture.id === selection.id
-          ? {
-              ...picture,
-              selected: selection?.selected,
-            }
+          ? { ...picture, selected: selection.selected }
           : picture
       );
       setPictures(updatedPictures);
-      addDeleteFromCheckBox(selection, id);
+      updateCart(selection, id);
     }
   };
 
-  const addDeleteFromCheckBox = (selection: PhotoVM, id: string) => {
-    const updateWithDeletedPicture = selectedPictures.filter(
-      (picture) => picture !== selection.id
-    );
+  const updateCart = (selection: PhotoVM, id: string) => {
+    const updatedCart = cartPictures.filter((pic) => pic.id !== id);
+    const updatedSelected = selectedPictures.filter((pid) => pid !== id);
 
-    if (selection.selected === true)
+    if (selection.selected) {
       setSelectedPictures([...selectedPictures, id]);
-    else {
-      setSelectedPictures(updateWithDeletedPicture);
+      setCartPictures([...updatedCart, selection]);
+    } else {
+      setSelectedPictures(updatedSelected);
+      setCartPictures(updatedCart);
     }
   };
 
   useEffect(() => {
-    getPictures().then((apiPictures) => {
-      const mappedPictures = mapPictureCollectionFromApiToVm(
-        apiPictures,
-        selectedPictures
-      );
-      setPictures(mappedPictures);
-    });
-  }, [selectedPictures, setPictures]);
+    getPictures().then(setPictures);
+  }, [selectedPictures]);
 
   return (
     <ImageCategoryComponent
