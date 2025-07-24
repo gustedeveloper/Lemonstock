@@ -11,12 +11,12 @@ interface Pages {
 const pages: Pages[] = [
   {
     id: 1,
-    name: "City category",
+    name: "City",
     path: "/city-category",
   },
   {
     id: 2,
-    name: "Nature category",
+    name: "Landscapes",
     path: "/landscape-category",
   },
 ];

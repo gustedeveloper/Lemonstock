@@ -1,10 +1,10 @@
 import { Grid2 } from "@mui/material";
 import { FC } from "react";
-import { PictureInfoVm } from "../../../core/model";
+import { PhotoVM } from "../../../core/model";
 import { PictureCard } from "./picture-card";
 
 interface Props {
-  pictures: PictureInfoVm[];
+  pictures: PhotoVM[];
   handleCheckBox: (id: string) => void;
 }
 

@@ -1,11 +1,11 @@
 import { Card, CardActionArea, Grid2 } from "@mui/material";
 import { FC, useState } from "react";
-import { PictureInfoVm } from "../../../core/model";
+import { PhotoVM } from "../../../core/model";
 import { PictureImage } from "./picture-image";
 import { PictureCardOverlay } from "./picture-card-overlay";
 
 interface Props {
-  picture: PictureInfoVm;
+  picture: PhotoVM;
   handleCheckBox: (id: string) => void;
 }
 

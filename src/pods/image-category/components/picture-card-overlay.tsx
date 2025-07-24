@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import { FC } from "react";
-import { PictureInfoVm } from "../../../core/model";
+import { PhotoVM } from "../../../core/model";
 import { BuyCheckbox } from "./buy-checkbox";
 
 interface Props {
   hoveredId: string | null;
-  picture: PictureInfoVm;
+  picture: PhotoVM;
   handleCheckBox: (id: string) => void;
 }
 

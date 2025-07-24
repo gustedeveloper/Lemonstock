@@ -1,9 +1,9 @@
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { FC } from "react";
-import { PictureInfoVm } from "../../../core/model";
+import { PhotoVM } from "../../../core/model";
 
 interface Props {
-  picture: PictureInfoVm;
+  picture: PhotoVM;
   handleCheckBox: (id: string) => void;
 }
 

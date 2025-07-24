@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { PictureGallery } from "./components";
-import { PictureInfoVm } from "../../core/model";
+import { PhotoVM } from "../../core/model";
 
 interface Props {
-  pictures: PictureInfoVm[];
+  pictures: PhotoVM[];
   handleCheckBox: (id: string) => void;
 }
 

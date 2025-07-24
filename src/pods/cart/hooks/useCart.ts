@@ -1,46 +1,37 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { PicturesContext } from "../../../core/context/pictures-context";
-import { PictureInfo } from "../../../core/model";
-import { getAllPictures } from "../cart.api";
+import { PhotoVM } from "../../../core/model";
 
 export const useCart = () => {
   const {
     selectedPictures,
     setSelectedPictures,
+    cartPictures,
+    setCartPictures,
     totalCartBalance,
     setTotalCartBalance,
     removeAll,
   } = useContext(PicturesContext);
-  const [cartPictures, setCartPictures] = useState<PictureInfo[]>([]);
 
   useEffect(() => {
-    getAllPictures().then((apiPictures) => {
-      setCartPictures(
-        apiPictures.filter((picture) => selectedPictures.includes(picture.id))
-      );
-    });
+    const updatedCart = cartPictures.filter((picture) =>
+      selectedPictures.includes(picture.id)
+    );
+    setCartPictures(updatedCart);
 
-    getTotalCartBalance();
-  }, [selectedPictures, cartPictures]);
+    getTotalCartBalance(updatedCart);
+  }, [selectedPictures]);
 
   const deleteFromCart = (id: string) => {
-    const updateWithDeletedPicture = selectedPictures.filter(
-      (picture) => picture !== id
-    );
-
-    setSelectedPictures(updateWithDeletedPicture);
+    setSelectedPictures(selectedPictures.filter((picId) => picId !== id));
+    setCartPictures(cartPictures.filter((pic) => pic.id !== id));
   };
 
-  const getTotalCartBalance = () => {
-    const totalBalance = cartPictures.reduce(
-      (total, picture) => total + picture.price,
-      0
-    );
-
-    const decimals = totalBalance.toFixed(2);
-
-    setTotalCartBalance(Number(decimals));
+  const getTotalCartBalance = (cart: PhotoVM[]) => {
+    const total = cart.reduce((sum, picture) => sum + picture.price, 0);
+    setTotalCartBalance(Number(total.toFixed(2)));
   };
+
   return {
     cartPictures,
     deleteFromCart,
