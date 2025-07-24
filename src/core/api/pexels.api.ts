@@ -15,7 +15,7 @@ export const getPicturesFromPexels = async (
   if (cached) {
     try {
       const parsed: PhotoAPI[] = JSON.parse(cached);
-      return mapPictureCollectionFromApiToVm(parsed, selectedPictures);
+      return mapPictureCollectionFromApiToVm(parsed, selectedPictures, query);
     } catch (error) {
       console.warn("Error parsing cached data", error);
     }
@@ -35,5 +35,5 @@ export const getPicturesFromPexels = async (
   const photos: PhotoAPI[] = data.photos;
 
   localStorage.setItem(cacheKey, JSON.stringify(photos));
-  return mapPictureCollectionFromApiToVm(photos, selectedPictures);
+  return mapPictureCollectionFromApiToVm(photos, selectedPictures, query);
 };
