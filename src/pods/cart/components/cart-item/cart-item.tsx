@@ -26,6 +26,7 @@ export const CartItem: FC<Props> = (props) => {
         >
           <Card
             sx={{
+              objectFit: "contain",
               width: {
                 xs: "130px",
                 sm: "150px",
@@ -50,7 +51,7 @@ export const CartItem: FC<Props> = (props) => {
               alignItems: "center",
             }}
           >
-            <CartItemInfo title={picture.title} price={picture.price} />
+            <CartItemInfo price={picture.price} />
 
             <CartItemActions id={picture.id} deleteFromCart={deleteFromCart} />
           </Box>
