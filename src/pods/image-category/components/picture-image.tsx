@@ -1,9 +1,9 @@
 import { CardMedia } from "@mui/material";
 import { FC } from "react";
-import { PictureInfoVm } from "../../../core/model";
+import { PhotoVM } from "../../../core/model";
 
 interface Props {
-  picture: PictureInfoVm;
+  picture: PhotoVM;
 }
 
 export const PictureImage: FC<Props> = (props) => {
