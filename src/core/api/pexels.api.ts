@@ -1,8 +1,7 @@
 import { PhotoAPI, PhotoVM } from "../model";
 import { mapPictureCollectionFromApiToVm } from "./pexels.mapper";
 
-const API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
-const BASE_URL = "https://api.pexels.com/v1/search";
+const BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 const CACHE_PREFIX = "pexels-cache-";
 
 export const getPicturesFromPexels = async (
@@ -21,11 +20,7 @@ export const getPicturesFromPexels = async (
     }
   }
 
-  const response = await fetch(`${BASE_URL}?query=${query}&per_page=12`, {
-    headers: {
-      Authorization: API_KEY,
-    },
-  });
+  const response = await fetch(`${BASE_URL}/api/pexels?query=${query}`);
 
   if (!response.ok) {
     throw new Error("Failed to fetch Pexels data");
