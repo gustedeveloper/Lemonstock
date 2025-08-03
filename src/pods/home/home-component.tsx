@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import { FC } from "react";
 import { Hero } from "./components/hero";
 import { SearchBar } from "./components/search-bar";
+import { Filters } from "./components/filters";
 
 export const HomeComponent: FC = () => {
   return (
@@ -19,6 +20,7 @@ export const HomeComponent: FC = () => {
       >
         <Hero />
         <SearchBar />
+        <Filters />
       </Container>
     </>
   );
