@@ -51,7 +51,7 @@ export const Hero: FC = () => {
             variant="h1"
             sx={{
               paddingTop: "50px",
-              color: "white",
+              color: "secondary.main",
               textShadow: "0px 5px 5px rgba(0, 0, 0, 0.25)",
             }}
           >
@@ -60,7 +60,7 @@ export const Hero: FC = () => {
           <Typography
             variant="h3"
             sx={{
-              color: "white",
+              color: "secondary.main",
               textShadow: "0px 5px 5px rgba(0, 0, 0, 0.25)",
             }}
           >
