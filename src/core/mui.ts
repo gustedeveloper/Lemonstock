@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import "./../index.css";
 
 export const theme = createTheme({
   palette: {
@@ -7,6 +8,7 @@ export const theme = createTheme({
     },
     primary: {
       main: "#21404F",
+      dark: "#162D38",
     },
     secondary: {
       main: "#F8F8F8",
@@ -17,15 +19,15 @@ export const theme = createTheme({
     fontFamily: `"Inria Sans", sans-serif`,
     h1: {
       fontSize: "3rem",
-      fontWeight: 300,
+      fontWeight: 400,
     },
     h2: {
       fontSize: "1.75rem",
-      fontWeight: 300,
+      fontWeight: 400,
     },
     h3: {
       fontSize: "1.5rem",
-      fontWeight: 300,
+      fontWeight: 400,
     },
     h4: {
       fontSize: "1.3rem",
