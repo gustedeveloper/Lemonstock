@@ -1,8 +1,11 @@
 import { Container } from "@mui/material";
 import { FC } from "react";
-import { Hero } from "./components/hero";
-import { SearchBar } from "./components/search-bar";
-import { Filters } from "./components/filters";
+import {
+  Hero,
+  Filters,
+  SearchBar,
+  AllCategorySectionsContainer,
+} from "./components";
 
 export const HomeComponent: FC = () => {
   return (
@@ -12,7 +15,6 @@ export const HomeComponent: FC = () => {
           display: "flex",
           maxWidth: "1200px",
           paddingTop: "100px",
-          height: "100vw",
           justifyContent: "flex-start",
           flexDirection: "column",
           gap: "30px",
@@ -21,6 +23,7 @@ export const HomeComponent: FC = () => {
         <Hero />
         <SearchBar />
         <Filters />
+        <AllCategorySectionsContainer />
       </Container>
     </>
   );
