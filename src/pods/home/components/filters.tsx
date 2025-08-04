@@ -18,8 +18,9 @@ export const Filters: FC = () => {
   return (
     <>
       <Box sx={{ display: "flex", gap: "20px" }}>
-        {filterCategories.map((category) => (
+        {filterCategories.map((category, index) => (
           <Button
+            key={index}
             variant="contained"
             size="large"
             sx={{
