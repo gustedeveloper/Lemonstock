@@ -8,6 +8,9 @@ export interface PhotoAPI {
   photographer_url: string;
   src: {
     original: string;
+    large: string;
+    medium: string;
+    small: string;
   };
 }
 
@@ -16,6 +19,16 @@ export interface PhotoVM {
   title: string;
   alt: string;
   price: number;
-  picUrl: string;
+  picUrl: {
+    original: string;
+    large: string;
+    medium: string;
+    small: string;
+  };
   selected: boolean;
+}
+
+export interface Section {
+  categoryTitle: string;
+  images: PhotoVM[];
 }
