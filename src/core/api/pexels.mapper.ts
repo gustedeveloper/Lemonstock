@@ -7,12 +7,7 @@ export const mapPictureFromApiToVm = (
   category: string
 ): api.PhotoVM => ({
   id: picture.id.toString(),
-  picUrl: {
-    original: picture.src.original,
-    large: picture.src.large,
-    medium: picture.src.medium,
-    small: picture.src.small,
-  },
+  picUrl: picture.src.original,
   title: picture.alt,
   alt: picture.alt,
   price: getPhotoPrice(category),

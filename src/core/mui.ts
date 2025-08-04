@@ -1,33 +1,30 @@
 import { createTheme } from "@mui/material";
-import "./../index.css";
 
 export const theme = createTheme({
   palette: {
     background: {
-      default: "#F8F8F8",
+      default: "white",
     },
     primary: {
-      main: "#21404F",
-      dark: "#162D38",
+      main: "#354f52",
     },
     secondary: {
-      main: "#F8F8F8",
+      main: "#84a98c",
       light: "#cad2c5",
     },
   },
   typography: {
-    fontFamily: `"Inria Sans", sans-serif`,
     h1: {
       fontSize: "3rem",
-      fontWeight: 400,
+      fontWeight: 600,
     },
     h2: {
       fontSize: "1.75rem",
-      fontWeight: 400,
+      fontWeight: 600,
     },
     h3: {
       fontSize: "1.5rem",
-      fontWeight: 400,
+      fontWeight: 600,
     },
     h4: {
       fontSize: "1.3rem",
@@ -42,7 +39,6 @@ export const theme = createTheme({
           "&::-webkit-scrollbar": {
             display: "none",
           },
-          boxSizing: "border-box",
         },
       },
     },
