@@ -1,3 +1,4 @@
+import { AllCategoriesPage } from "../scenes/all-categories";
 import { CheckoutPage } from "../scenes/checkout";
 import { CityCategoryPage } from "../scenes/city-category";
 import { HomePage } from "../scenes/home";
@@ -11,6 +12,7 @@ export const AppRoutes = () => {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/all-categories" element={<AllCategoriesPage />} />
           <Route path="/city-category" element={<CityCategoryPage />} />
           <Route
             path="/landscape-category"
