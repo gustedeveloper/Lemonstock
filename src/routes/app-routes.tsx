@@ -11,7 +11,10 @@ export const AppRoutes = () => {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/all-categories" element={<CategoriesCatalogPage />} />
+          <Route
+            path="/categories-catalog"
+            element={<CategoriesCatalogPage />}
+          />
           <Route
             path="/category/:categoryName"
             element={<ImageGalleryPage />}
