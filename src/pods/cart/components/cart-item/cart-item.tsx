@@ -33,7 +33,7 @@ export const CartItem: FC<Props> = (props) => {
               },
             }}
           >
-            <CartItemImage image={picture.picUrl} alt={picture.title} />
+            <CartItemImage image={picture.picUrl.medium} alt={picture.title} />
           </Card>
           <Box
             sx={{
