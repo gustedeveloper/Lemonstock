@@ -1,16 +1,15 @@
 export const priceLevelCategories = {
-  low: ["food", "drinks", "abstract", "education"],
-  medium: ["landscape", "city", "animals", "technology", "sports", "business"],
-  high: [
-    "people",
-    "travel",
-    "adventure",
-    "fashion",
-    "space",
-    "galaxy",
-    "interior",
-    "romance",
+  low: ["food", "abstract", "education", "minimalism", "office"],
+  medium: [
+    "nature",
+    "city",
+    "animals",
+    "technology",
+    "sports",
+    "culture",
+    "vintage",
   ],
+  high: ["people", "adventure", "fashion", "space", "interior design", "love"],
 };
 
 const prices = {
