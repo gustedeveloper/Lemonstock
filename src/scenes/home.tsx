@@ -1,13 +1,15 @@
 import { FC } from "react";
-
 import { HomeContainer } from "../pods/home";
-import { Header } from "../layout/header.layout";
+import { AppLayout } from "../layout";
+import { CartInsideDrawer } from "../pods/cart/cart-drawer";
 
 export const HomePage: FC = () => {
   return (
     <>
-      <Header />
-      <HomeContainer />
+      <AppLayout>
+        <HomeContainer />
+        <CartInsideDrawer />
+      </AppLayout>
     </>
   );
 };

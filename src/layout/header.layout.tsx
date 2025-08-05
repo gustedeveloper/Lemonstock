@@ -2,7 +2,6 @@ import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { FC, useContext } from "react";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { PicturesContext } from "../core/context/pictures-context";
-import { useLocation } from "react-router-dom";
 
 interface Props {
   children?: React.ReactNode;
@@ -10,8 +9,6 @@ interface Props {
 
 export const Header: FC<Props> = ({ children }) => {
   const { handleDrawerOpen } = useContext(PicturesContext);
-
-  const location = useLocation();
 
   return (
     <AppBar position="fixed" sx={{ bgcolor: "#354f52" }}>
@@ -40,31 +37,28 @@ export const Header: FC<Props> = ({ children }) => {
           </Typography>
         </Box>
         <Box>{children}</Box>
-        {location.pathname !== "/" ? (
-          <Box
+
+        <Box
+          sx={{
+            width: "142px",
+            display: " flex",
+            justifyContent: {
+              xs: "center",
+              md: "flex-end",
+            },
+          }}
+        >
+          <Button
+            variant="contained"
+            color="secondary"
             sx={{
-              width: "142px",
-              display: " flex",
-              justifyContent: {
-                xs: "center",
-                md: "flex-end",
-              },
+              margin: "10px 0px",
             }}
+            onClick={handleDrawerOpen}
           >
-            <Button
-              variant="contained"
-              color="secondary"
-              sx={{
-                margin: "10px 0px",
-              }}
-              onClick={handleDrawerOpen}
-            >
-              <ShoppingCartIcon color="action" />
-            </Button>
-          </Box>
-        ) : (
-          <></>
-        )}
+            <ShoppingCartIcon color="action" />
+          </Button>
+        </Box>
       </Toolbar>
     </AppBar>
   );
