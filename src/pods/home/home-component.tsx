@@ -14,7 +14,6 @@ export const HomeComponent: FC = () => {
         sx={{
           display: "flex",
           maxWidth: "1200px",
-          paddingTop: "100px",
           justifyContent: "flex-start",
           flexDirection: "column",
           gap: "30px",
