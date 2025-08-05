@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { AllCategoriesComponent } from "./all-categories.component";
+import { CategoriesCatalogComponent } from "./all-categories.component";
 
-export const AllCategoriesContainer: FC = () => {
-  return <AllCategoriesComponent />;
+export const CategoriesCatalogContainer: FC = () => {
+  return <CategoriesCatalogComponent />;
 };

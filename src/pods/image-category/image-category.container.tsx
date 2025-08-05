@@ -48,7 +48,13 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
   };
 
   useEffect(() => {
-    getPictures().then(setPictures);
+    getPictures()
+      .then((pics) => {
+        setPictures(pics);
+      })
+      .catch((error) => {
+        console.error("Error en getPictures:", error);
+      });
   }, [selectedPictures]);
 
   return (

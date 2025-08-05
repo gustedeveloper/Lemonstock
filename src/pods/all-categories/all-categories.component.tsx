@@ -1,9 +1,9 @@
 import { Container } from "@mui/material";
 import { FC } from "react";
 import { categoryData } from "../../core/model";
-import { CategoryContainer } from "./components/category";
+import { CategoryComponent } from "./components/category";
 
-export const AllCategoriesComponent: FC = () => {
+export const CategoriesCatalogComponent: FC = () => {
   return (
     <>
       <Container
@@ -16,7 +16,7 @@ export const AllCategoriesComponent: FC = () => {
         }}
       >
         {categoryData.map((category, index) => (
-          <CategoryContainer category={category} key={index} />
+          <CategoryComponent category={category} key={index} />
         ))}
       </Container>
     </>
