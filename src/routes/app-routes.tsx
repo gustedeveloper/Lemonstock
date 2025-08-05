@@ -1,8 +1,7 @@
-import { AllCategoriesPage } from "../scenes/all-categories";
+import { CategoriesCatalogPage } from "../scenes/categories-catalog";
+import { ImageGalleryPage } from "../scenes/image-gallery";
 import { CheckoutPage } from "../scenes/checkout";
-import { CityCategoryPage } from "../scenes/city-category";
 import { HomePage } from "../scenes/home";
-import { LandscapeCategoryPage } from "../scenes/landscape-category";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -12,12 +11,12 @@ export const AppRoutes = () => {
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/all-categories" element={<AllCategoriesPage />} />
-          <Route path="/city-category" element={<CityCategoryPage />} />
+          <Route path="/all-categories" element={<CategoriesCatalogPage />} />
           <Route
-            path="/landscape-category"
-            element={<LandscapeCategoryPage />}
+            path="/category/:categoryName"
+            element={<ImageGalleryPage />}
           />
+
           <Route path="/checkout" element={<CheckoutPage />} />
         </Routes>
       </Router>

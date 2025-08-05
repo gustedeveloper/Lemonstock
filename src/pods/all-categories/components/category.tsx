@@ -1,17 +1,24 @@
 import { Box, Card, CardMedia, Typography } from "@mui/material";
 import { Category } from "../../../core/model";
 import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   category: Category;
 }
 
-export const CategoryContainer: FC<Props> = (props) => {
+export const CategoryComponent: FC<Props> = (props) => {
   const { category } = props;
+
+  const navigate = useNavigate();
+
+  const normalizeForUrl = (name: string) =>
+    name.toLowerCase().replace(/\s+/g, "-");
 
   return (
     <>
       <Card
+        onClick={() => navigate(`/category/${normalizeForUrl(category.name)}`)}
         sx={{
           cursor: "pointer",
           position: "relative",
