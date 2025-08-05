@@ -11,22 +11,20 @@ interface Pages {
 const pages: Pages[] = [
   {
     id: 1,
-    name: "City",
-    path: "/city-category",
+    name: "Home",
+    path: "/",
   },
   {
     id: 2,
-    name: "Landscapes",
-    path: "/landscape-category",
+    name: "Categories",
+    path: "/categories-catalog",
   },
 ];
 
 export const NavBarComponent: FC = () => {
   const location = useLocation();
 
-  const tabValue = ["/city-category", "/landscape-category"].includes(
-    location.pathname
-  )
+  const tabValue = ["/", "/categories-catalog"].includes(location.pathname)
     ? location.pathname
     : false;
 
