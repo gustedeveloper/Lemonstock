@@ -11,7 +11,7 @@ export const PictureImage: FC<Props> = (props) => {
   return (
     <CardMedia
       component="img"
-      image={picture.picUrl}
+      image={picture.picUrl.large}
       alt={picture.title}
       sx={{
         objectFit: "cover",
