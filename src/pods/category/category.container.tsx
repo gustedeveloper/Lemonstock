@@ -12,7 +12,9 @@ export const CategoryContainer: FC = () => {
 
   return (
     <ImageCategoryContainer
-      getPictures={() => getPicturesFromPexels(apiQuery, selectedPictures)}
+      getPictures={(page, perPage) =>
+        getPicturesFromPexels(apiQuery, selectedPictures, perPage, page)
+      }
     />
   );
 };
