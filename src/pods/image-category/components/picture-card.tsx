@@ -1,4 +1,4 @@
-import { Card, CardActionArea, Grid2 } from "@mui/material";
+import { CardActionArea, ImageListItem } from "@mui/material";
 import { FC, useState } from "react";
 import { PhotoVM } from "../../../core/model";
 import { PictureImage } from "./picture-image";
@@ -14,33 +14,36 @@ export const PictureCard: FC<Props> = (props) => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <Grid2 container key={picture.id}>
-      <Grid2>
-        <Card
-          sx={{
-            width: {
-              xs: "200px",
-              md: "300px",
-            },
-            height: {
-              xs: "300px",
-              md: "500px",
-            },
-            position: "relative",
-          }}
-          onMouseEnter={() => setHoveredId(picture.id)}
-          onMouseLeave={() => setHoveredId(null)}
-        >
-          <CardActionArea>
-            <PictureImage picture={picture} />
-            <PictureCardOverlay
-              hoveredId={hoveredId}
-              picture={picture}
-              handleCheckBox={handleCheckBox}
-            />
-          </CardActionArea>
-        </Card>
-      </Grid2>
-    </Grid2>
+    <ImageListItem
+      key={picture.id}
+      sx={{
+        position: "relative",
+        width: "100%",
+        borderRadius: "5px",
+        overflow: "hidden",
+        cursor: "pointer",
+        transition: "opacity 0.2s ease-in-out",
+        "&:hover": {
+          opacity: 0.9,
+        },
+      }}
+      onMouseEnter={() => setHoveredId(picture.id)}
+      onMouseLeave={() => setHoveredId(null)}
+    >
+      <CardActionArea
+        sx={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+        }}
+      >
+        <PictureImage picture={picture} />
+        <PictureCardOverlay
+          hoveredId={hoveredId}
+          picture={picture}
+          handleCheckBox={handleCheckBox}
+        />
+      </CardActionArea>
+    </ImageListItem>
   );
 };

@@ -1,4 +1,4 @@
-import { Grid2 } from "@mui/material";
+import { Box, ImageList, useTheme, useMediaQuery } from "@mui/material";
 import { FC } from "react";
 import { PhotoVM } from "../../../core/model";
 import { PictureCard } from "./picture-card";
@@ -10,25 +10,34 @@ interface Props {
 
 export const PictureGallery: FC<Props> = (props) => {
   const { pictures, handleCheckBox } = props;
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
+
+  const getColumns = () => {
+    if (isTablet) return 2;
+    return 3;
+  };
 
   return (
-    <Grid2
-      container
+    <Box
       sx={{
-        justifyContent: "center",
+        width: "100%",
+        maxWidth: "100%",
         margin: {
           xs: "150px 0px",
           md: "0px",
         },
+        overflow: "hidden",
       }}
     >
-      <Grid2
-        size={12}
+      <ImageList
+        variant="masonry"
+        cols={getColumns()}
+        gap={10}
         sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "30px",
-          justifyContent: "center",
+          width: "100%",
+          margin: 0,
+          overflow: "visible",
         }}
       >
         {pictures.map((picture) => (
@@ -38,7 +47,7 @@ export const PictureGallery: FC<Props> = (props) => {
             handleCheckBox={handleCheckBox}
           />
         ))}
-      </Grid2>
-    </Grid2>
+      </ImageList>
+    </Box>
   );
 };

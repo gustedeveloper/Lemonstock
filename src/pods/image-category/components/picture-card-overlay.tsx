@@ -21,7 +21,7 @@ export const PictureCardOverlay: FC<Props> = (props) => {
         background:
           "linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.0))",
         color: "white",
-        padding: "10px 20px",
+        padding: "20px",
         opacity: hoveredId === picture.id ? 1 : 0,
         transition: "opacity 0.5s ease-in-out",
         textAlign: "flex-start",
