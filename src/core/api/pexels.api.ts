@@ -6,9 +6,10 @@ const CACHE_PREFIX = "pexels-cache-";
 
 export const getPicturesFromPexels = async (
   query: string,
-  selectedPictures: string[] = []
+  selectedPictures: string[] = [],
+  photosPerPage = 15
 ): Promise<PhotoVM[]> => {
-  const cacheKey = `${CACHE_PREFIX}${query.toLowerCase()}`;
+  const cacheKey = `${CACHE_PREFIX}${query.toLowerCase()}-${photosPerPage}`;
   const cached = localStorage.getItem(cacheKey);
 
   if (cached) {
@@ -20,7 +21,11 @@ export const getPicturesFromPexels = async (
     }
   }
 
-  const response = await fetch(`${BASE_URL}/api/pexels?query=${query}`);
+  const response = await fetch(
+    `${BASE_URL}/api/pexels?query=${encodeURIComponent(
+      query
+    )}&photosPerPage=${photosPerPage}`
+  );
 
   if (!response.ok) {
     throw new Error("Failed to fetch Pexels data");
