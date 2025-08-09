@@ -22,7 +22,7 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
   const [items, setItems] = useState<PhotoVM[]>([]);
   const itemsRef = useRef<PhotoVM[]>([]);
   const [page, setPage] = useState<number>(1);
-  const PER_PAGE = 20;
+  const PER_PAGE = 10;
   const MAX_ITEMS = 80;
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [hasMore, setHasMore] = useState<boolean>(true);
