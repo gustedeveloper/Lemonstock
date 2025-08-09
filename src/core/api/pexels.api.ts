@@ -7,7 +7,7 @@ const CACHE_PREFIX = "pexels-cache-";
 export const getPicturesFromPexels = async (
   query: string,
   selectedPictures: string[] = [],
-  photosPerPage = 20,
+  photosPerPage = 10,
   page = 1
 ): Promise<PhotoVM[]> => {
   const cacheKey = `${CACHE_PREFIX}${query.toLowerCase()}-${photosPerPage}-p${page}`;
