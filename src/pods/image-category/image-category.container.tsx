@@ -10,6 +10,7 @@ import { PhotoVM } from "../../core/model";
 import { ImageCategoryComponent } from "./image-category.component";
 import { PicturesContext } from "../../core/context/pictures-context";
 import { dedupeById } from "../../common/helpers/dedupe-by-id";
+import { Box, Button, Container } from "@mui/material";
 
 interface Props {
   getPictures: (page: number, perPage: number) => Promise<PhotoVM[]>;
@@ -59,7 +60,7 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
     }
   };
 
-  const load = useCallback(async () => {
+  const loadMore = useCallback(async () => {
     if (isLoading || !hasMore) return;
     setIsLoading(true);
     try {
@@ -119,19 +120,38 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
     };
   }, [getPictures]);
 
-  useEffect(() => {
-    const onScroll = () => {
-      const nearBottom =
-        window.innerHeight + window.scrollY >= document.body.offsetHeight - 400;
-      if (nearBottom) {
-        load();
-      }
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [load]);
-
   return (
-    <ImageCategoryComponent pictures={items} handleCheckBox={handleCheckBox} />
+    <Container
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <ImageCategoryComponent
+        pictures={items}
+        handleCheckBox={handleCheckBox}
+      />
+
+      {hasMore && (
+        <Box sx={{ mt: 3, mb: 6 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={loadMore}
+            disabled={isLoading}
+            sx={{
+              textTransform: "none",
+              font: "inherit",
+              color: "secondary.main",
+              borderRadius: "20px",
+            }}
+          >
+            {isLoading ? "Loading..." : "Load more"}
+          </Button>
+        </Box>
+      )}
+    </Container>
   );
 };
