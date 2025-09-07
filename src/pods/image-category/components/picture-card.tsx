@@ -1,4 +1,4 @@
-import { CardActionArea, ImageListItem } from "@mui/material";
+import { Box, CardActionArea } from "@mui/material";
 import { FC, useState } from "react";
 import { PhotoVM } from "../../../core/model";
 import { PictureImage } from "./picture-image";
@@ -14,7 +14,7 @@ export const PictureCard: FC<Props> = (props) => {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <ImageListItem
+    <Box
       key={picture.id}
       sx={{
         position: "relative",
@@ -44,6 +44,6 @@ export const PictureCard: FC<Props> = (props) => {
           handleCheckBox={handleCheckBox}
         />
       </CardActionArea>
-    </ImageListItem>
+    </Box>
   );
 };
