@@ -15,6 +15,8 @@ export const mapPictureFromApiToVm = (
   },
   title: picture.alt,
   alt: picture.alt,
+  width: picture.width,
+  height: picture.height,
   price: getPhotoPrice(category),
   selected: selectedPictures.includes(picture.id.toString()),
 });

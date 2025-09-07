@@ -18,6 +18,8 @@ export interface PhotoVM {
   id: string;
   title: string;
   alt: string;
+  width: number;
+  height: number;
   price: number;
   picUrl: {
     original: string;
