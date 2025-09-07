@@ -64,17 +64,22 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
     if (isLoading || !hasMore) return;
     setIsLoading(true);
     try {
-      const prevLength = itemsRef.current.length;
       const newItems = await getPictures(page, PER_PAGE);
 
       setItems((prev) => {
-        const merged = dedupeById([...prev, ...newItems]).slice(0, MAX_ITEMS);
+        const fullMerged = dedupeById([...prev, ...newItems]);
+
+        // Si vamos a exceder el límite, solo tomar las imágenes que caben
+        const willExceedLimit = fullMerged.length > MAX_ITEMS;
+        const merged = willExceedLimit ? prev : fullMerged;
+
         itemsRef.current = merged;
         return merged;
       });
 
-      const totalAfter = prevLength + newItems.length;
-      const reached80 = totalAfter >= MAX_ITEMS;
+      // Recalcular hasMore basado en si realmente se añadieron imágenes
+      const actualLength = itemsRef.current.length;
+      const reached80 = actualLength >= MAX_ITEMS;
       const gotFullPage = newItems.length === PER_PAGE;
       setHasMore(!reached80 && gotFullPage);
       setPage((p) => p + 1);
@@ -133,8 +138,16 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
         handleCheckBox={handleCheckBox}
       />
 
-      {hasMore && (
-        <Box sx={{ mt: 3, mb: 6 }}>
+      <Box
+        sx={{
+          mt: 3,
+          mb: 6,
+          minHeight: "52px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        {hasMore && (
           <Button
             variant="contained"
             color="primary"
@@ -146,12 +159,13 @@ export const ImageCategoryContainer: FC<Props> = (props) => {
               font: "inherit",
               color: "secondary.main",
               borderRadius: "20px",
+              transition: "opacity 0.3s ease-out",
             }}
           >
             {isLoading ? "Loading..." : "Load more"}
           </Button>
-        </Box>
-      )}
+        )}
+      </Box>
     </Container>
   );
 };
