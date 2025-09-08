@@ -1,7 +1,7 @@
 import React from "react";
-import { Box, useTheme, useMediaQuery, GlobalStyles } from "@mui/material";
-import { ColumnsPhotoAlbum } from "react-photo-album";
-import "react-photo-album/columns.css";
+import { Box, GlobalStyles } from "@mui/material";
+import { RowsPhotoAlbum } from "react-photo-album";
+import "react-photo-album/rows.css";
 
 import { FC } from "react";
 import { PhotoVM } from "../../../core/model";
@@ -13,11 +13,6 @@ interface Props {
 }
 
 export const PictureGallery: FC<Props> = ({ pictures, handleCheckBox }) => {
-  const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
-
-  const columnCount = isTablet ? 2 : 3;
-
   // `meta` field with the original PhotoVM to use in rendering
   const photos = pictures.map((p) => ({
     src: p.picUrl.large,
@@ -48,9 +43,9 @@ export const PictureGallery: FC<Props> = ({ pictures, handleCheckBox }) => {
           margin: { xs: "150px 0px", md: "0px" },
         }}
       >
-        <ColumnsPhotoAlbum
+        <RowsPhotoAlbum
           photos={photos}
-          columns={columnCount}
+          targetRowHeight={300}
           spacing={10}
           // render.wrapper allows you to keep the wrapper that react-photo-album uses
           // and passes props (style/className) containing the calculated positioning
