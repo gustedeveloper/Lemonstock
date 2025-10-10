@@ -3,7 +3,7 @@ import { FC } from "react";
 import {
   Hero,
   Filters,
-  SearchBar,
+  SearchBarContainer,
   AllCategorySectionsContainer,
 } from "./components";
 
@@ -20,7 +20,7 @@ export const HomeComponent: FC = () => {
         }}
       >
         <Hero />
-        <SearchBar />
+        <SearchBarContainer />
         <Filters />
         <AllCategorySectionsContainer />
       </Container>

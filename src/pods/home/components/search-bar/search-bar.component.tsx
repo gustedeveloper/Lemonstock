@@ -2,7 +2,14 @@ import { FC } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box, TextField } from "@mui/material";
 
-export const SearchBar: FC = () => {
+interface Props {
+  value: string;
+  handleSearchChange: (value: string) => void;
+}
+
+export const SearchBarComponent: FC<Props> = (props) => {
+  const { value, handleSearchChange } = props;
+
   return (
     <>
       <Box>
@@ -10,6 +17,8 @@ export const SearchBar: FC = () => {
           id="outlined-basic"
           placeholder="Search images..."
           variant="outlined"
+          value={value}
+          onChange={(e) => handleSearchChange(e.target.value)}
           fullWidth
           slotProps={{
             input: {
