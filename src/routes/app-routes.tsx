@@ -4,6 +4,7 @@ import { CheckoutPage } from "../scenes/checkout";
 import { HomePage } from "../scenes/home";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { SearchResultsPage } from "../scenes/search-results";
 
 export const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ export const AppRoutes = () => {
           />
 
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/search" element={<SearchResultsPage />} />
         </Routes>
       </Router>
     </>
